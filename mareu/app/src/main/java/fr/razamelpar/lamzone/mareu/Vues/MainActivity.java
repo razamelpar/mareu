@@ -1,14 +1,14 @@
 package fr.razamelpar.lamzone.mareu.Vues;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private List<Reunion> mReunionList;
     private ReunionAdapter mReunionAdapter;
-    private Button btnReunion;
+    private FloatingActionButton btnReunion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ReunionActivity.class);
                 startActivity(intent);
-                finish();
 
             }
         });
