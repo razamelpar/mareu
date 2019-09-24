@@ -1,4 +1,4 @@
-package fr.razamelpar.lamzone.mareu;
+package fr.razamelpar.lamzone.mareu.Modeles;
 
 import java.util.Date;
 import java.util.List;
@@ -14,7 +14,7 @@ public class Reunion {
     private String sujetReunion;
     private String participantsReunion;
 
-    Reunion (String nomReunion, String numeroSalle, String dateReunion, String sujetReunion, String participantsReunion)
+    public Reunion(String nomReunion, String numeroSalle, String dateReunion, String sujetReunion, String participantsReunion)
     {
         this.nomReunion = nomReunion;
         this.numeroSalle = numeroSalle;

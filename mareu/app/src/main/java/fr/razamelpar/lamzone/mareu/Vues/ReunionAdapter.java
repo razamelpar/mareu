@@ -1,13 +1,19 @@
-package fr.razamelpar.lamzone.mareu;
+package fr.razamelpar.lamzone.mareu.Vues;
 
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
+import fr.razamelpar.lamzone.mareu.R;
+
+import static fr.razamelpar.lamzone.mareu.R.id.txtReunionName;
 
 /**
  * Created by Alexandre Vanneçon "Razamelpar" on 23/09/2019.
@@ -58,7 +64,9 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionAdapter.ReunionV
             txtReunionSalle.setText(reunion.getNumeroSalle());
             txtReunionDate.setText(reunion.getDateReunion());
             txtReunionSujet.setText(reunion.getSujetReunion());
-            txtReunionParticipants.setText(reunion.getParticipantsReunion());
+            txtReunionParticipants.setText(reunion.getParticipantsReunion());;
         }
+
+
     }
 }

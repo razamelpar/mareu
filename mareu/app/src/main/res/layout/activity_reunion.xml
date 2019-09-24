@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.circularreveal.CircularRevealRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vues.ReunionActivity">
+
+    <Button
+        android:id="@+id/btnDate"
+        android:text="Choisir une date de réunion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnDate"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btnHoraire"
+        android:text="Choisir un horaire de réunion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtDate"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/txtHoraire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnHoraire"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text=""/>
+
+</com.google.android.material.circularreveal.CircularRevealRelativeLayout>
