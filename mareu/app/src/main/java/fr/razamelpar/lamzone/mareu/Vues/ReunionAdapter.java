@@ -52,7 +52,7 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionAdapter.ReunionV
 
              TextView txtReunionName;
              TextView txtReunionSalle;
-             TextView txtReunionDate;
+             TextView txtReunionHoraire;
              TextView txtReunionSujet;
              TextView txtReunionParticipants;
              ImageButton btnDelete;
@@ -61,18 +61,18 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionAdapter.ReunionV
             super(itemView);
             txtReunionName = (TextView)itemView.findViewById(R.id.txtReunionName);
             txtReunionSalle = (TextView)itemView.findViewById(R.id.txtReunionSalle);
-            txtReunionDate = (TextView)itemView.findViewById(R.id.txtReunionDate);
+            txtReunionHoraire = (TextView)itemView.findViewById(R.id.txtReunionHoraire);
             txtReunionSujet = (TextView)itemView.findViewById(R.id.txtReunionSujet);
             txtReunionParticipants = (TextView)itemView.findViewById(R.id.txtReunionParticipants);
             btnDelete = (ImageButton) itemView.findViewById(R.id.btnDelete);
 
 
         }
-        public void  display(Reunion reunion) {
+        public void  display(final Reunion reunion) {
 
             txtReunionName.setText(reunion.getNomReunion());
             txtReunionSalle.setText(reunion.getNumeroSalle());
-            txtReunionDate.setText(reunion.getDateReunion());
+            txtReunionHoraire.setText(reunion.getHoraireReunion());
             txtReunionSujet.setText(reunion.getSujetReunion());
             txtReunionParticipants.setText(reunion.getParticipantsReunion());
             btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -80,10 +80,9 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionAdapter.ReunionV
                 public void onClick(View v) {
                     /* TODO
                      *   finir suppression item
-                     *   plantage quand clique
-                     *
-                     *  mApiServices.deleteReunion(reunion);
-                     * */
+                     */
+                    mApiServices.deleteReunion(reunion);
+
                 }
             });
         }

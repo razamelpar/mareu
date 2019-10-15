@@ -1,8 +1,5 @@
 package fr.razamelpar.lamzone.mareu.Modeles;
 
-import java.util.Date;
-import java.util.List;
-
 /**
  * Created by Alexandre Vanneçon "Razamelpar" on 23/09/2019.
  */
@@ -10,15 +7,17 @@ public class Reunion {
 
     private String nomReunion;
     private String numeroSalle;
+    private String horaireReunion;
     private String dateReunion;
     private String sujetReunion;
     private String participantsReunion;
 
-    public Reunion(String nomReunion, String numeroSalle, String dateReunion, String sujetReunion, String participantsReunion)
+    public Reunion(String nomReunion, String numeroSalle, String dateReunion, String horaireReunion, String sujetReunion, String participantsReunion)
     {
         this.nomReunion = nomReunion;
         this.numeroSalle = numeroSalle;
         this.dateReunion = dateReunion;
+        this.horaireReunion = horaireReunion;
         this.sujetReunion = sujetReunion;
         this.participantsReunion = participantsReunion;
     }
@@ -39,6 +38,13 @@ public class Reunion {
         this.numeroSalle = numeroSalle;
     }
 
+    public String getHoraireReunion() {
+        return horaireReunion;
+    }
+
+    public void setHoraireReunion(String horaireReunion) {
+        this.horaireReunion = horaireReunion;
+    }
     public String getDateReunion() {
         return dateReunion;
     }

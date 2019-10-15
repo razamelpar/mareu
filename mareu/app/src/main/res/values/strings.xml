@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Maréu</string>
+    <string name="str_tri_croissant">Tri croissant</string>
+    <string name="str_tri_decroissant">Tri déroissant</string>
 </resources>

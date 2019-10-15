@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:title="Tri par salle" >
+        <menu >
+            <group android:id="@+id/grpTriSalle">
+                <item
+                    android:id="@+id/salleCroissant"
+                    android:title="@string/str_tri_croissant" />
+                <item
+                    android:id="@+id/salleDecroissant"
+                    android:title="@string/str_tri_decroissant" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Tri par date" >
+        <menu >
+            <group android:id="@+id/grpTriDate">
+                <item
+                    android:id="@+id/dateCroissant"
+                    android:title="@string/str_tri_croissant" />
+                <item
+                    android:id="@+id/dateDecroissant"
+                    android:title="@string/str_tri_decroissant" />
+            </group>
+        </menu>
+    </item>
+</menu>

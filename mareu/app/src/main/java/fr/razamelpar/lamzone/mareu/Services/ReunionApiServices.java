@@ -12,7 +12,7 @@ public class ReunionApiServices {
     private List<Reunion> reunions = DummyReunionGenerator.generateReunions();
     /**
      * Recuperer mes reunions
-     * @return
+     * @return reunion
      */
     public List<Reunion> getReunions() {
         return reunions;
@@ -24,6 +24,24 @@ public class ReunionApiServices {
      */
     public void deleteReunion(Reunion reunion) {
         reunions.remove(reunion);
+    }
+
+
+    /* Methode de tri */
+    public void triDateReunionCroissant(List<Reunion> reunions) {
+        //TODO
+    }
+
+    public void triDateReunionDecroissant(List<Reunion> reunions) {
+        //TODO
+    }
+
+    public void triSalleReunionCroissant(List<Reunion> reunions) {
+        //TODO
+    }
+
+    public void triSalleReunionDecroissant(List<Reunion> reunions) {
+        //TODO
     }
 
 }
