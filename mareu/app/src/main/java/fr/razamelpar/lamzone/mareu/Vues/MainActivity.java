@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -22,9 +20,7 @@ import fr.razamelpar.lamzone.mareu.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
     private List<Reunion> mReunionList;
-    private ReunionAdapter mReunionAdapter;
     private FloatingActionButton btnReunion;
 
     @Override
@@ -43,17 +39,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mRecyclerView = (RecyclerView)findViewById(R.id.mRecyclerView);
-
-
-        // charger liste fake reunion
-        mReunionList = DI.getReunionApiServices().getReunions();
-
-
-        mReunionAdapter = new ReunionAdapter(mReunionList);
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        mRecyclerView.setAdapter(mReunionAdapter);
 
     }
 
