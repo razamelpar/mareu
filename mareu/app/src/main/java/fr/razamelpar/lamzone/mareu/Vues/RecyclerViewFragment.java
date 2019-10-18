@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import butterknife.ButterKnife;
 import fr.razamelpar.lamzone.mareu.DI.DI;
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 import fr.razamelpar.lamzone.mareu.R;
+import fr.razamelpar.lamzone.mareu.Services.ReunionApiServices;
 
 
 /**
@@ -28,32 +30,50 @@ public class RecyclerViewFragment extends Fragment {
 
     private List<Reunion> mReunionList;
     private ReunionAdapter mReunionAdapter;
+    private ReunionApiServices mApiServices;
 
     public RecyclerViewFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mApiServices = DI.getReunionApiServices();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recycler_view, container,false);
         ButterKnife.bind(this,view);
-        this.configureRecyclerView();
+        configureRecyclerView();
 
         return view;
     }
 
     private void configureRecyclerView() {
 
-        this.mReunionList = DI.getReunionApiServices().getReunions();
+        initList();
 
-        this.mReunionAdapter = new ReunionAdapter(mReunionList);
+        mRecyclerView.setAdapter(new ReunionAdapter(mReunionList));
 
-        this.mRecyclerView.setAdapter(this.mReunionAdapter);
+        mReunionAdapter = new ReunionAdapter(mReunionList);
 
-        this.mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(mReunionAdapter);
 
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+    }
+
+    public void initList(){
+        mReunionList = mApiServices.getReunions();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        initList();
     }
 
 }

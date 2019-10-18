@@ -12,15 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.List;
-
 import fr.razamelpar.lamzone.mareu.DI.DI;
-import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 import fr.razamelpar.lamzone.mareu.R;
+import fr.razamelpar.lamzone.mareu.Services.DummyReunionGenerator;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Reunion> mReunionList;
     private FloatingActionButton btnReunion;
 
     @Override
@@ -52,19 +49,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.dateCroissant:
-                DI.getReunionApiServices().triDateReunionCroissant(mReunionList);
+                DI.getReunionApiServices().triDateReunionCroissant(DummyReunionGenerator.FAKE_REUNION);
                 Toast.makeText(this, "tri croissant date",Toast.LENGTH_LONG).show();
                 return  true;
             case R.id.dateDecroissant:
-                DI.getReunionApiServices().triDateReunionDecroissant(mReunionList);
+                DI.getReunionApiServices().triDateReunionDecroissant(DummyReunionGenerator.FAKE_REUNION);
                 Toast.makeText(this, "tri decroissant date",Toast.LENGTH_LONG).show();
                 return  true;
             case R.id.salleCroissant:
-                DI.getReunionApiServices().triSalleReunionCroissant(mReunionList);
+                DI.getReunionApiServices().triSalleReunionCroissant(DummyReunionGenerator.FAKE_REUNION);
                 Toast.makeText(this, "tri croissant salle",Toast.LENGTH_LONG).show();
                 return  true;
             case R.id.salleDecroissant:
-                DI.getReunionApiServices().triSalleReunionDecroissant(mReunionList);
+                DI.getReunionApiServices().triSalleReunionDecroissant(DummyReunionGenerator.FAKE_REUNION);
                 Toast.makeText(this, "tri decroissant salle",Toast.LENGTH_LONG).show();
                 return  true;
             default:

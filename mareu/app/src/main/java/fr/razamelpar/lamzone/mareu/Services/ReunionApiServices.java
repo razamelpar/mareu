@@ -1,5 +1,6 @@
 package fr.razamelpar.lamzone.mareu.Services;
 
+import java.util.Collections;
 import java.util.List;
 
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
@@ -38,10 +39,14 @@ public class ReunionApiServices {
 
     public void triSalleReunionCroissant(List<Reunion> reunions) {
         //TODO
+        Collections.sort(reunions, new TriDateReunion());
+
     }
 
     public void triSalleReunionDecroissant(List<Reunion> reunions) {
         //TODO
+        Collections.sort(reunions, new TriDateReunion());
+        Collections.reverseOrder();
     }
 
 }

@@ -19,11 +19,11 @@ import fr.razamelpar.lamzone.mareu.R;
  */
 public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
 
-    List<Reunion> reunionList;
+    private final List<Reunion> reunionList;
 
-    ReunionAdapter(List<Reunion> reunionList) {
+    public  ReunionAdapter(List<Reunion> items) {
 
-        this.reunionList = reunionList;
+        reunionList = items;
     }
 
     @Override
@@ -38,13 +38,8 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
     public void onBindViewHolder(final ReunionViewHolder viewHolder, final int position) {
         viewHolder.display(this.reunionList.get(position));
 
-        //viewHolder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //        reunionList.remove(position);
-        //    }
-        //});
     }
+
 
     @Override
     public int getItemCount() {

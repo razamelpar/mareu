@@ -17,11 +17,11 @@ public abstract class DummyReunionGenerator {
      */
     public  static List<Reunion> FAKE_REUNION = Arrays.asList(
 
-        new Reunion("reunion test", ReunionRoom.BOWSER.toString(),"12-12-2019","12:00","blabla du jour","machin@test.fr"),
-        new Reunion("reunion test 2",ReunionRoom.LUIGI.getName(),"12-15-2019","15:00","blabla du jour","machin@test.fr"),
-        new Reunion("reunion test 3",ReunionRoom.MARIO.getName(),"12-32-2019","18:00","blabla du jour","machin@test.fr"),
-        new Reunion("reunion test 4",ReunionRoom.TOAD.getName(),"12-64-2019","16:00","blabla du jour","machin@test.fr"),
-        new Reunion("reunion test 5",ReunionRoom.PEACH.getName(),"12-58-2019","09:00","blabla du jour","machin@test.fr")
+        new Reunion("reunion test", ReunionRoom.DIDDYKONG,"12-12-2019","12:00","blabla du jour","machin@test.fr"),
+        new Reunion("reunion test 2", ReunionRoom.BOWSER,"12-15-2019","15:00","blabla du jour","machin@test.fr"),
+        new Reunion("reunion test 3", ReunionRoom.MARIO,"12-32-2019","18:00","blabla du jour","machin@test.fr"),
+        new Reunion("reunion test 4", ReunionRoom.TOAD,"12-64-2019","16:00","blabla du jour","machin@test.fr"),
+        new Reunion("reunion test 5", ReunionRoom.PEACH,"12-58-2019","09:00","blabla du jour","machin@test.fr")
 
     );
 

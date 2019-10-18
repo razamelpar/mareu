@@ -13,7 +13,4 @@ public class DI {
         return  service;
     }
 
-    public static ReunionApiServices getNewInstanceApiServices(){
-        return new ReunionApiServices();
-    }
 }

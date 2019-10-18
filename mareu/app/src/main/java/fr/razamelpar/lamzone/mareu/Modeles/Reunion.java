@@ -3,16 +3,16 @@ package fr.razamelpar.lamzone.mareu.Modeles;
 /**
  * Created by Alexandre Vanneçon "Razamelpar" on 23/09/2019.
  */
-public class Reunion {
+public class Reunion{
 
     private String nomReunion;
-    private String numeroSalle;
+    private ReunionRoom numeroSalle;
     private String horaireReunion;
     private String dateReunion;
     private String sujetReunion;
     private String participantsReunion;
 
-    public Reunion(String nomReunion, String numeroSalle, String dateReunion, String horaireReunion, String sujetReunion, String participantsReunion)
+    public Reunion(String nomReunion, ReunionRoom numeroSalle, String dateReunion, String horaireReunion, String sujetReunion, String participantsReunion)
     {
         this.nomReunion = nomReunion;
         this.numeroSalle = numeroSalle;
@@ -30,12 +30,16 @@ public class Reunion {
         this.nomReunion = nomReunion;
     }
 
-    public String getNumeroSalle() {
+    public ReunionRoom getNumeroSalle() {
         return numeroSalle;
     }
 
-    public void setNumeroSalle(String numeroSalle) {
+    public void setNumeroSalle(ReunionRoom numeroSalle) {
         this.numeroSalle = numeroSalle;
+    }
+
+    public int getIntSalle(){
+        return this.numeroSalle.getRoomNumber();
     }
 
     public String getHoraireReunion() {
