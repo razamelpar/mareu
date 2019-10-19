@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,19 +49,21 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.dateCroissant:
                 DI.getReunionApiServices().triDateReunionCroissant(DummyReunionGenerator.FAKE_REUNION);
-                Toast.makeText(this, "tri croissant date",Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "tri croissant date",Toast.LENGTH_LONG).show();
                 return  true;
             case R.id.dateDecroissant:
                 DI.getReunionApiServices().triDateReunionDecroissant(DummyReunionGenerator.FAKE_REUNION);
-                Toast.makeText(this, "tri decroissant date",Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "tri decroissant date",Toast.LENGTH_LONG).show();
                 return  true;
             case R.id.salleCroissant:
                 DI.getReunionApiServices().triSalleReunionCroissant(DummyReunionGenerator.FAKE_REUNION);
-                Toast.makeText(this, "tri croissant salle",Toast.LENGTH_LONG).show();
+                DI.getReunionApiServices().getReunions();
+                //Toast.makeText(this, "tri croissant salle",Toast.LENGTH_LONG).show();
                 return  true;
             case R.id.salleDecroissant:
                 DI.getReunionApiServices().triSalleReunionDecroissant(DummyReunionGenerator.FAKE_REUNION);
-                Toast.makeText(this, "tri decroissant salle",Toast.LENGTH_LONG).show();
+                DI.getReunionApiServices().getReunions();
+                //Toast.makeText(this, "tri decroissant salle",Toast.LENGTH_LONG).show();
                 return  true;
             default:
                 return super.onOptionsItemSelected(item);

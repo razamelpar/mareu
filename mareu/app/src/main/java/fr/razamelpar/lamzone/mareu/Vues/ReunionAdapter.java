@@ -23,7 +23,7 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
 
     public  ReunionAdapter(List<Reunion> items) {
 
-        reunionList = items;
+        this.reunionList = items;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
 
     @Override
     public void onBindViewHolder(final ReunionViewHolder viewHolder, final int position) {
-        viewHolder.display(this.reunionList.get(position));
+        viewHolder.display(reunionList.get(position));
 
     }
 
@@ -44,7 +44,7 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
     @Override
     public int getItemCount() {
 
-        return this.reunionList.size();
+        return reunionList.size();
     }
 
 }
