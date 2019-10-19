@@ -7,7 +7,7 @@ import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 /**
  * Created by Alexandre Vanneçon "Razamelpar" on 18/10/2019.
  */
-public class TriDateReunion implements Comparator<Reunion> {
+public class TriSalleReunion implements Comparator<Reunion> {
 
     @Override
     public int compare(Reunion o1, Reunion o2) {

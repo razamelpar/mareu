@@ -14,7 +14,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import fr.razamelpar.lamzone.mareu.DI.DI;
 import fr.razamelpar.lamzone.mareu.R;
-import fr.razamelpar.lamzone.mareu.Services.DummyReunionGenerator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,21 +52,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.dateCroissant:
-                DI.getReunionApiServices().triDateReunionCroissant(DummyReunionGenerator.FAKE_REUNION);
-                //Toast.makeText(this, "tri croissant date",Toast.LENGTH_LONG).show();
+                DI.getReunionApiServices().triDateReunionCroissant();
+                mFragment.updateList();
                 return  true;
             case R.id.dateDecroissant:
-                DI.getReunionApiServices().triDateReunionDecroissant(DummyReunionGenerator.FAKE_REUNION);
-                //Toast.makeText(this, "tri decroissant date",Toast.LENGTH_LONG).show();
+                DI.getReunionApiServices().triDateReunionDecroissant();
+                mFragment.updateList();
                 return  true;
             case R.id.salleCroissant:
                 DI.getReunionApiServices().triSalleReunionCroissant();
                 mFragment.updateList();
-                //Toast.makeText(this, "tri croissant salle",Toast.LENGTH_LONG).show();
                 return  true;
             case R.id.salleDecroissant:
-                DI.getReunionApiServices().triSalleReunionDecroissant(DummyReunionGenerator.FAKE_REUNION);
-                //Toast.makeText(this, "tri decroissant salle",Toast.LENGTH_LONG).show();
+                DI.getReunionApiServices().triSalleReunionDecroissant();
                 mFragment.updateList();
                 return  true;
             default:

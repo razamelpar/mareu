@@ -29,24 +29,24 @@ public class ReunionApiServices {
 
 
     /* Methode de tri */
-    public void triDateReunionCroissant(List<Reunion> reunions) {
+    public void triDateReunionCroissant() {
         //TODO
     }
 
-    public void triDateReunionDecroissant(List<Reunion> reunions) {
+    public void triDateReunionDecroissant() {
         //TODO
     }
 
     public void triSalleReunionCroissant() {
         //TODO
-        Collections.sort(this.reunions, new TriDateReunion());
+        Collections.sort(this.reunions, new TriSalleReunion());
 
     }
 
-    public void triSalleReunionDecroissant(List<Reunion> reunions) {
+    public void triSalleReunionDecroissant() {
         //TODO
-        Collections.sort(reunions, new TriDateReunion());
-        Collections.reverseOrder();
+        Collections.sort(this.reunions, new TriSalleReunion());
+        Collections.reverse(this.reunions);
     }
 
 }
