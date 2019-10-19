@@ -37,9 +37,9 @@ public class ReunionApiServices {
         //TODO
     }
 
-    public void triSalleReunionCroissant(List<Reunion> reunions) {
+    public void triSalleReunionCroissant() {
         //TODO
-        Collections.sort(reunions, new TriDateReunion());
+        Collections.sort(this.reunions, new TriDateReunion());
 
     }
 

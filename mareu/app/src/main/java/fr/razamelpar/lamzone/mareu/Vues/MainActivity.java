@@ -8,6 +8,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -18,6 +19,7 @@ import fr.razamelpar.lamzone.mareu.Services.DummyReunionGenerator;
 public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton btnReunion;
+    private RecyclerViewFragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnReunion = findViewById(R.id.btnReunion);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        mFragment = (RecyclerViewFragment) fragmentManager.findFragmentById(R.id.fragment);
 
         btnReunion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(this, "tri decroissant date",Toast.LENGTH_LONG).show();
                 return  true;
             case R.id.salleCroissant:
-                DI.getReunionApiServices().triSalleReunionCroissant(DummyReunionGenerator.FAKE_REUNION);
-                DI.getReunionApiServices().getReunions();
+                DI.getReunionApiServices().triSalleReunionCroissant();
+                mFragment.updateList();
                 //Toast.makeText(this, "tri croissant salle",Toast.LENGTH_LONG).show();
                 return  true;
             case R.id.salleDecroissant:
                 DI.getReunionApiServices().triSalleReunionDecroissant(DummyReunionGenerator.FAKE_REUNION);
-                DI.getReunionApiServices().getReunions();
                 //Toast.makeText(this, "tri decroissant salle",Toast.LENGTH_LONG).show();
+                mFragment.updateList();
                 return  true;
             default:
                 return super.onOptionsItemSelected(item);

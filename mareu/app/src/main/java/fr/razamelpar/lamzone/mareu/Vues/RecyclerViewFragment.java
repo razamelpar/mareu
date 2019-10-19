@@ -3,11 +3,9 @@ package fr.razamelpar.lamzone.mareu.Vues;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +18,6 @@ import butterknife.ButterKnife;
 import fr.razamelpar.lamzone.mareu.DI.DI;
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 import fr.razamelpar.lamzone.mareu.R;
-import fr.razamelpar.lamzone.mareu.Services.DummyReunionGenerator;
 import fr.razamelpar.lamzone.mareu.Services.ReunionApiServices;
 
 
@@ -78,31 +75,10 @@ public class RecyclerViewFragment extends Fragment {
         super.onStart();
         initList();
     }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.dateCroissant:
-                DI.getReunionApiServices().triDateReunionCroissant(DummyReunionGenerator.FAKE_REUNION);
-                //Toast.makeText(this, "tri croissant date",Toast.LENGTH_LONG).show();
-                return  true;
-            case R.id.dateDecroissant:
-                DI.getReunionApiServices().triDateReunionDecroissant(DummyReunionGenerator.FAKE_REUNION);
-                //Toast.makeText(this, "tri decroissant date",Toast.LENGTH_LONG).show();
-                return  true;
-            case R.id.salleCroissant:
-                DI.getReunionApiServices().triSalleReunionCroissant(DummyReunionGenerator.FAKE_REUNION);
-                DI.getReunionApiServices().getReunions();
-                mReunionAdapter.notifyDataSetChanged();
-                //Toast.makeText(this, "tri croissant salle",Toast.LENGTH_LONG).show();
-                return  true;
-            case R.id.salleDecroissant:
-                DI.getReunionApiServices().triSalleReunionDecroissant(DummyReunionGenerator.FAKE_REUNION);
-                DI.getReunionApiServices().getReunions();
-                //Toast.makeText(this, "tri decroissant salle",Toast.LENGTH_LONG).show();
-                return  true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
+    public void updateList() {
+
+        mReunionList = mApiServices.getReunions();
+        mReunionAdapter.notifyDataSetChanged();
+    }
 }
