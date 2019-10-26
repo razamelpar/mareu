@@ -2,6 +2,7 @@ package fr.razamelpar.lamzone.mareu.Vues;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -11,19 +12,25 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 import java.util.Locale;
 
+import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
 import fr.razamelpar.lamzone.mareu.R;
 
 public class ReunionActivity extends AppCompatActivity {
 
     Button btnDate;
     Button btnHoraire;
+    Button btnSalle;
+    Button btnParticipants;
     TextView txtDate;
     TextView txtHoraire;
+    TextView txtSalle;
+    TextView txtParticipants;
     DatePickerDialog.OnDateSetListener mDatePickerDialog;
     TimePickerDialog.OnTimeSetListener mTimePickerDialog;
     Calendar calendrier;
@@ -32,7 +39,9 @@ public class ReunionActivity extends AppCompatActivity {
     int annee;
     int heures;
     int minutes;
+    Button btnSave;
 
+    ReunionRoom roomListe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +67,9 @@ public class ReunionActivity extends AppCompatActivity {
                         ReunionActivity.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDatePickerDialog,
-                        jour, mois, annee);
+                        jour,
+                        mois,
+                        annee);
 
                 dialogDate.getDatePicker().setMinDate(System.currentTimeMillis());
                 dialogDate.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -86,7 +97,8 @@ public class ReunionActivity extends AppCompatActivity {
                         ReunionActivity.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mTimePickerDialog,
-                        heures,minutes,
+                        heures,
+                        minutes,
                         true);
 
                 dialogTime.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -100,6 +112,55 @@ public class ReunionActivity extends AppCompatActivity {
 
             }
         };
+        /**
+         * TODO a verfifier
+         */
+        String dateComparable = txtDate + "-" + txtHoraire;
+
+        /**
+         *  dialgue selecteur de salle
+         */
+        btnSalle = findViewById(R.id.btnSalle);
+        txtSalle = findViewById(R.id.txtSalle);
+
+
+        btnSalle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ReunionActivity.this);
+                builder.setTitle("Choisir une salle.");
+                final String[] listeSalle = {"Bowser","Luigi","Mario","Peach","Toad","Yoshi","Wario","Donkey Kong","Diddy Kong","Daisy"};
+                int choiceItem = 0;
+                builder.setSingleChoiceItems(listeSalle, choiceItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        txtSalle.setText(listeSalle[which]);
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        /**
+         *  dialogue selecteur de participants
+         */
+        btnParticipants = findViewById(R.id.btnParticipants);
+        txtParticipants = findViewById(R.id.txtParticipants);
+
+
+        /**
+         * boutton de sauvegarde
+         */
+
+        btnSave = findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 }

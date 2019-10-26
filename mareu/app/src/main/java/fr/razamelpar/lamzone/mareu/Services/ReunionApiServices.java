@@ -28,13 +28,19 @@ public class ReunionApiServices {
     }
 
 
-    /* Methode de tri */
+    /**
+     * Methodes de tri
+      */
+
     public void triDateReunionCroissant() {
         //TODO
+        Collections.sort(this.reunions, new TriDateReunion());
     }
 
     public void triDateReunionDecroissant() {
         //TODO
+        Collections.sort(this.reunions, new TriDateReunion());
+        Collections.reverse(this.reunions);
     }
 
     public void triSalleReunionCroissant() {

@@ -11,14 +11,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.razamelpar.lamzone.mareu.DI.DI;
+import fr.razamelpar.lamzone.mareu.Events.DeleteReunionEvent;
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 import fr.razamelpar.lamzone.mareu.R;
 import fr.razamelpar.lamzone.mareu.Services.ReunionApiServices;
+
 
 
 /**
@@ -26,7 +31,8 @@ import fr.razamelpar.lamzone.mareu.Services.ReunionApiServices;
  */
 public class RecyclerViewFragment extends Fragment {
 
-    @BindView(R.id.mRecyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.mRecyclerView)
+    public RecyclerView mRecyclerView;
 
     private List<Reunion> mReunionList;
     private ReunionAdapter mReunionAdapter;
@@ -73,7 +79,14 @@ public class RecyclerViewFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        EventBus.getDefault().register(this);
         initList();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     public void updateList() {
@@ -81,4 +94,12 @@ public class RecyclerViewFragment extends Fragment {
         mReunionList = mApiServices.getReunions();
         mReunionAdapter.notifyDataSetChanged();
     }
+
+    @Subscribe
+    public void onDeleteReunion(DeleteReunionEvent event){
+        mApiServices.deleteReunion(event.reunion);
+        configureRecyclerView();
+    }
+
+
 }

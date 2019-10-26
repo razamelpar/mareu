@@ -36,4 +36,13 @@ public enum ReunionRoom {
         return name;
     }
 
+    public String[] getValues() {
+        String[] strs = new String[ReunionRoom.values().length];
+        int i = 1;
+
+        for (ReunionRoom p: ReunionRoom.values())
+            strs[i++] = p.toString().toLowerCase();
+
+        return strs;
+    }
 }

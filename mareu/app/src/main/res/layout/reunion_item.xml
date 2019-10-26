@@ -21,12 +21,20 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtReunionName"
+                android:id="@+id/txtSujetReunion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:padding="2dp"
-                android:text="nom de reunion" />
+                android:text="Sujet de reunion" />
+
+            <TextView
+                android:id="@+id/txtReunionHoraire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:padding="2dp"
+                android:text="horaire reunion" />
 
             <TextView
                 android:id="@+id/txtReunionSalle"
@@ -39,30 +47,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/deuxieme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txtReunionHoraire"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:padding="2dp"
-                android:text="horaire reunion" />
-
-            <TextView
-                android:id="@+id/txtReunionSujet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:padding="2dp"
-                android:text="sujet reunion" />
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/troisieme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +54,7 @@
 
             <TextView
                 android:id="@+id/txtReunionParticipants"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:padding="2dp"

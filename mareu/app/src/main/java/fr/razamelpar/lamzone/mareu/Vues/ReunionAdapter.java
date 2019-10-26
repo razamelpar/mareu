@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
+import fr.razamelpar.lamzone.mareu.Events.DeleteReunionEvent;
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 import fr.razamelpar.lamzone.mareu.R;
 
@@ -23,7 +26,7 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
 
     public  ReunionAdapter(List<Reunion> items) {
 
-        this.reunionList = items;
+        reunionList = items;
     }
 
     @Override
@@ -35,9 +38,19 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(final ReunionViewHolder viewHolder, final int position) {
-        viewHolder.display(reunionList.get(position));
+    public void onBindViewHolder(final ReunionViewHolder viewHolder, int position) {
+        final Reunion reunion = reunionList.get(position);
+        viewHolder.txtSujetReunion.setText(reunion.getSujetReunion());
+        viewHolder.txtReunionSalle.setText(reunion.getNumeroSalle().getName());
+        viewHolder.txtReunionHoraire.setText(reunion.getHoraireReunion());
+        viewHolder.txtReunionParticipants.setText(reunion.getParticipantsReunion());
 
+        viewHolder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new DeleteReunionEvent(reunion));
+            }
+        });
     }
 
 

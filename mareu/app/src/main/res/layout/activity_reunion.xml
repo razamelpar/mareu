@@ -6,44 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".Vues.ReunionActivity">
 
+    <EditText
+        android:id="@+id/txtSujet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="text"
+        android:text="sujet de la réunion" />
+
     <Button
         android:id="@+id/btnDate"
-        android:text="Choisir une date de réunion"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:padding="10dp"/>
+        android:layout_below="@+id/txtSujet"
+        android:layout_margin="10dp"
+        android:text="Choisir une date de réunion" />
 
     <TextView
         android:id="@+id/txtDate"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnDate"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_margin="10dp"
         android:text="" />
 
     <Button
         android:id="@+id/btnHoraire"
-        android:text="Choisir un horaire de réunion"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtDate"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"/>
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:text="Choisir un horaire de réunion" />
 
     <TextView
         android:id="@+id/txtHoraire"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnHoraire"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btnSalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtHoraire"
+        android:layout_margin="10dp"
+        android:text="Choisir la salle de réunion" />
+
+    <TextView
+        android:id="@+id/txtSalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnSalle"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:id="@+id/btnParticipants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtSalle"
+        android:layout_margin="10dp"
+        android:text="Choisir les participants" />
+
+    <TextView
+        android:id="@+id/txtParticipants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnParticipants"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtParticipants"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text=""/>
+        android:layout_margin="10dp"
+        android:text="Enregistré" />
 
 </com.google.android.material.circularreveal.CircularRevealRelativeLayout>
