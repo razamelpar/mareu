@@ -62,7 +62,11 @@ public class RecyclerViewFragment extends Fragment {
         return view;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateList();
+    }
 
     private void configureRecyclerView() {
 

@@ -29,6 +29,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
 
+import fr.razamelpar.lamzone.mareu.DI.DI;
 import fr.razamelpar.lamzone.mareu.Events.AddNewReunionEvent;
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
@@ -211,14 +212,10 @@ public class ReunionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(v.getContext(), MainActivity.class);
-                intent.putExtra("sujet", txtSujet.toString());
-                intent.putExtra("room", ReunionRoom.getRoom(txtSalle.toString()));
-                intent.putExtra("date", txtDate.toString());
-                intent.putExtra("horaire", txtHoraire.toString());
-                intent.putExtra("participants",txtParticipants.toString());
+                Reunion newReunion = new Reunion(txtSujet.getText().toString(),ReunionRoom.getRoom(txtSalle.getText().toString()),txtDate.getText().toString(),txtHoraire.getText().toString(),txtParticipants.getText().toString());
+                DI.getReunionApiServices().addReunion(newReunion);
 
-                v.getContext().startActivity(intent);
+                finish();
             }
         });
 

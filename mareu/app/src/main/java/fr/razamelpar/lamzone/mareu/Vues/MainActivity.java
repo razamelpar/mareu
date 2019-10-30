@@ -44,20 +44,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
-        Intent intent = getIntent();
-        if (intent != null){
-            Reunion newReunion = new Reunion(intent.getStringExtra("sujet"),
-                    ReunionRoom.getRoom(intent.getStringExtra("room")),
-                    intent.getStringExtra("date"),
-                    intent.getStringExtra("horaire"),
-                    intent.getStringExtra("participants"));
-            //EventBus.getDefault().post(new AddNewReunionEvent(newReunion));
-            mFragment.mReunionList.add(newReunion);
-        }
-        //mFragment.updateList();
     }
 
     @Override
