@@ -37,7 +37,7 @@ public class RecyclerViewFragment extends Fragment {
     @BindView(R.id.mRecyclerView)
     public RecyclerView mRecyclerView;
 
-    private List<Reunion> mReunionList;
+    public List<Reunion> mReunionList;
     private ReunionAdapter mReunionAdapter;
     private ReunionApiServices mApiServices;
 
@@ -62,19 +62,7 @@ public class RecyclerViewFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Intent intent = getActivity().getIntent();
-        if (intent != null){
-            Reunion newReunion = new Reunion(intent.getStringExtra("sujet"),
-                    ReunionRoom.getRoom(intent.getStringExtra("room")),
-                    intent.getStringExtra("date"),
-                    intent.getStringExtra("horaire"),
-                    intent.getStringExtra("participants"));
-            //EventBus.getDefault().post(new AddNewReunionEvent(newReunion));
-        }
-    }
+
 
     private void configureRecyclerView() {
 

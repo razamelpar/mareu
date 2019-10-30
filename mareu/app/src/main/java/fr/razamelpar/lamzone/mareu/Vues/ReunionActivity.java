@@ -211,14 +211,14 @@ public class ReunionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
                 intent.putExtra("sujet", txtSujet.toString());
                 intent.putExtra("room", ReunionRoom.getRoom(txtSalle.toString()));
                 intent.putExtra("date", txtDate.toString());
                 intent.putExtra("horaire", txtHoraire.toString());
                 intent.putExtra("participants",txtParticipants.toString());
 
-                startActivity(intent);
+                v.getContext().startActivity(intent);
             }
         });
 
