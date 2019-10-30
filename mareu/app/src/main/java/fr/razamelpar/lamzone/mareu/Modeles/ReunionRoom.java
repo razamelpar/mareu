@@ -24,6 +24,16 @@ public enum ReunionRoom {
         this.name = name;
     }
 
+    // Static method return ReunionRoom
+    public static ReunionRoom getRoom(String name) {
+        for (ReunionRoom room : ReunionRoom.values()) {
+            if (room.name.equals(name)) {
+                return room;
+            }
+        }
+        return null;
+    }
+
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -45,4 +55,5 @@ public enum ReunionRoom {
 
         return strs;
     }
+
 }

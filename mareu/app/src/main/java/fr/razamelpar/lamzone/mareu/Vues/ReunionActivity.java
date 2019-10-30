@@ -3,29 +3,43 @@ package fr.razamelpar.lamzone.mareu.Vues;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
 
+import fr.razamelpar.lamzone.mareu.Events.AddNewReunionEvent;
+import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
 import fr.razamelpar.lamzone.mareu.R;
 
 public class ReunionActivity extends AppCompatActivity {
 
+    EditText txtSujet;
     Button btnDate;
     Button btnHoraire;
-    Button btnSalle;
+    Spinner spinnerSalle;
     Button btnParticipants;
     TextView txtDate;
     TextView txtHoraire;
@@ -40,8 +54,6 @@ public class ReunionActivity extends AppCompatActivity {
     int heures;
     int minutes;
     Button btnSave;
-
-    ReunionRoom roomListe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +91,17 @@ public class ReunionActivity extends AppCompatActivity {
         mDatePickerDialog = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int annee, int mois, int jour) {
-                txtDate.setText(jour + "/" + (mois +1 ) + "/" + annee);
+                String nJour = String.valueOf(jour);
+                String nMois = String.valueOf(mois + 1);
+                if (jour < 10) {
+                    nJour = "0" + jour;
+                }
+
+                if (mois < 10) {
+                    nMois = "0" + mois;
+                }
+
+                txtDate.setText(nJour + "/" + nMois + "/" + annee);
 
             }
         };
@@ -108,7 +130,10 @@ public class ReunionActivity extends AppCompatActivity {
         mTimePickerDialog = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int heures, int minutes) {
-                txtHoraire.setText(heures + ":" + minutes);
+                if(heures < 10 ){
+                    txtHoraire.setText("0" + heures + ":" + minutes);
+                }
+                else txtHoraire.setText(heures + ":" + minutes);
 
             }
         };
@@ -118,28 +143,23 @@ public class ReunionActivity extends AppCompatActivity {
         String dateComparable = txtDate + "-" + txtHoraire;
 
         /**
-         *  dialgue selecteur de salle
+         *  spinner selecteur de salle
          */
-        btnSalle = findViewById(R.id.btnSalle);
         txtSalle = findViewById(R.id.txtSalle);
-
-
-        btnSalle.setOnClickListener(new View.OnClickListener() {
+        spinnerSalle = findViewById(R.id.spinnerSalle);
+        final ReunionRoom[] reunionRooms = ReunionRoom.values();
+        spinnerSalle.setAdapter(new ArrayAdapter<ReunionRoom>(this,
+                R.layout.support_simple_spinner_dropdown_item,
+                reunionRooms));
+        spinnerSalle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ReunionActivity.this);
-                builder.setTitle("Choisir une salle.");
-                final String[] listeSalle = {"Bowser","Luigi","Mario","Peach","Toad","Yoshi","Wario","Donkey Kong","Diddy Kong","Daisy"};
-                int choiceItem = 0;
-                builder.setSingleChoiceItems(listeSalle, choiceItem, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        txtSalle.setText(listeSalle[which]);
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                txtSalle.setText(reunionRooms[position].getName());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                txtSalle.setText("Choisir une salle");
             }
         });
 
@@ -149,16 +169,56 @@ public class ReunionActivity extends AppCompatActivity {
         btnParticipants = findViewById(R.id.btnParticipants);
         txtParticipants = findViewById(R.id.txtParticipants);
 
+        final String[] listeParticipants = getResources().getStringArray(R.array.participants);
+        final boolean[] isChecked = new boolean[listeParticipants.length];
+        Arrays.fill(isChecked, false);
+
+        btnParticipants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ReunionActivity.this);
+                builder.setTitle(R.string.title);
+                builder.setMultiChoiceItems(listeParticipants, isChecked , new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                    }
+                });
+                builder.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        for (int i = 0; i < listeParticipants.length; i++){
+                            boolean checked = isChecked[i];
+                            if(checked) {
+                                txtParticipants.setText(txtParticipants.getText() + listeParticipants[i] + ", ");
+                            }
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
 
         /**
          * boutton de sauvegarde
          */
 
+        txtSujet = findViewById(R.id.txtSujet);
         btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("sujet", txtSujet.toString());
+                intent.putExtra("room", ReunionRoom.getRoom(txtSalle.toString()));
+                intent.putExtra("date", txtDate.toString());
+                intent.putExtra("horaire", txtHoraire.toString());
+                intent.putExtra("participants",txtParticipants.toString());
+
+                startActivity(intent);
             }
         });
 

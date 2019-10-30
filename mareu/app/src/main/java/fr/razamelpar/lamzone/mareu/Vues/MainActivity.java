@@ -12,7 +12,13 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import fr.razamelpar.lamzone.mareu.DI.DI;
+import fr.razamelpar.lamzone.mareu.Events.AddNewReunionEvent;
+import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
+import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
 import fr.razamelpar.lamzone.mareu.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,11 +41,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ReunionActivity.class);
                 startActivity(intent);
-
             }
         });
-
-
     }
 
     @Override

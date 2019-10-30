@@ -6,6 +6,7 @@ import java.util.List;
 
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
+import fr.razamelpar.lamzone.mareu.R;
 
 /**
  * Created by Alexandre Vanneçon "Razamelpar" on 23/09/2019.
@@ -28,26 +29,6 @@ public abstract class DummyReunionGenerator {
     static List<Reunion> generateReunions() {
 
         return new ArrayList<>(FAKE_REUNION);
-    }
-
-    /**
-     * Fake liste participants
-     */
-    public static List<String> PARTICIPANT = Arrays.asList(
-        new String("machin@test.fr"),
-        new String("truc@test.fr"),
-        new String("bidule@test.fr"),
-        new String("dupont@test.fr"),
-        new String("dupond@test.fr"),
-        new String("tintin@test.fr")
-
-    );
-
-    //TODO
-    // finir generation des participants
-    public static List<String> getPARTICIPANT() {
-
-        return PARTICIPANT;
     }
 
 }

@@ -24,9 +24,17 @@ public class ReunionApiServices {
      * @param reunion
      */
     public void deleteReunion(Reunion reunion) {
+
         reunions.remove(reunion);
     }
 
+    /**
+     * ajouter une reunion
+     */
+    public void addReunion(Reunion reunion) {
+
+        reunions.add(reunion);
+    }
 
     /**
      * Methodes de tri
@@ -44,13 +52,11 @@ public class ReunionApiServices {
     }
 
     public void triSalleReunionCroissant() {
-        //TODO
         Collections.sort(this.reunions, new TriSalleReunion());
 
     }
 
     public void triSalleReunionDecroissant() {
-        //TODO
         Collections.sort(this.reunions, new TriSalleReunion());
         Collections.reverse(this.reunions);
     }

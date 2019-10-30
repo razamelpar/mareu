@@ -1,6 +1,7 @@
 package fr.razamelpar.lamzone.mareu.Vues;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +20,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.razamelpar.lamzone.mareu.DI.DI;
+import fr.razamelpar.lamzone.mareu.Events.AddNewReunionEvent;
 import fr.razamelpar.lamzone.mareu.Events.DeleteReunionEvent;
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
+import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
 import fr.razamelpar.lamzone.mareu.R;
 import fr.razamelpar.lamzone.mareu.Services.ReunionApiServices;
 
@@ -48,6 +51,7 @@ public class RecyclerViewFragment extends Fragment {
         mApiServices = DI.getReunionApiServices();
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,6 +60,20 @@ public class RecyclerViewFragment extends Fragment {
         configureRecyclerView();
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Intent intent = getActivity().getIntent();
+        if (intent != null){
+            Reunion newReunion = new Reunion(intent.getStringExtra("sujet"),
+                    ReunionRoom.getRoom(intent.getStringExtra("room")),
+                    intent.getStringExtra("date"),
+                    intent.getStringExtra("horaire"),
+                    intent.getStringExtra("participants"));
+            //EventBus.getDefault().post(new AddNewReunionEvent(newReunion));
+        }
     }
 
     private void configureRecyclerView() {
@@ -80,8 +98,10 @@ public class RecyclerViewFragment extends Fragment {
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
+
         initList();
     }
+
 
     @Override
     public void onStop() {
@@ -98,6 +118,12 @@ public class RecyclerViewFragment extends Fragment {
     @Subscribe
     public void onDeleteReunion(DeleteReunionEvent event){
         mApiServices.deleteReunion(event.reunion);
+        configureRecyclerView();
+    }
+
+    @Subscribe
+    public void onAddNewReunion(AddNewReunionEvent event){
+        mApiServices.addReunion(event.reunion);
         configureRecyclerView();
     }
 

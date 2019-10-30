@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:inputType="text"
-        android:text="sujet de la réunion" />
+        android:hint="sujet de la réunion"/>
 
     <Button
         android:id="@+id/btnDate"
@@ -49,19 +49,17 @@
         android:layout_margin="10dp"
         android:text="" />
 
-    <Button
-        android:id="@+id/btnSalle"
+    <Spinner
+        android:id="@+id/spinnerSalle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtHoraire"
-        android:layout_margin="10dp"
-        android:text="Choisir la salle de réunion" />
+        android:layout_below="@+id/txtHoraire"/>
 
     <TextView
         android:id="@+id/txtSalle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnSalle"
+        android:layout_below="@+id/spinnerSalle"
         android:layout_margin="10dp" />
 
     <Button

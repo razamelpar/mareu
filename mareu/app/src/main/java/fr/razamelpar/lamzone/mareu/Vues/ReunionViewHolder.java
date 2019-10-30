@@ -1,5 +1,6 @@
 package fr.razamelpar.lamzone.mareu.Vues;
 
+import android.app.Activity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -28,7 +29,7 @@ public class ReunionViewHolder extends RecyclerView.ViewHolder {
     public ImageButton mDeleteButton;
     public ReunionViewHolder(View view) {
         super(view);
-        ButterKnife.bind(this, view);
+        ButterKnife.bind(ReunionViewHolder.this, view);
     }
 }
 
