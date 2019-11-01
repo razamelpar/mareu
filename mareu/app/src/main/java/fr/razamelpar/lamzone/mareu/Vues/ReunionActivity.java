@@ -188,6 +188,7 @@ public class ReunionActivity extends AppCompatActivity {
                 builder.setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        txtParticipants.setText("");
                         for (int i = 0; i < listeParticipants.length; i++){
                             boolean checked = isChecked[i];
                             if(checked) {

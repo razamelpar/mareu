@@ -10,78 +10,99 @@
         android:id="@+id/txtSujet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:inputType="text"
-        android:hint="sujet de la réunion"/>
+        android:hint="sujet de la réunion"
+        android:inputType="text" />
 
-    <Button
-        android:id="@+id/btnDate"
+    <LinearLayout
+        android:id="@+id/layoutDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtSujet"
-        android:layout_margin="10dp"
-        android:text="Choisir une date de réunion" />
+        android:orientation="horizontal"
+        android:layout_below="@+id/txtSujet">
 
-    <TextView
-        android:id="@+id/txtDate"
+        <Button
+            android:id="@+id/btnDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choisir une date"
+            />
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:hint="00/00/0000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutHoraire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnDate"
-        android:layout_centerInParent="true"
-        android:layout_margin="10dp"
-        android:text="" />
+        android:orientation="horizontal"
+        android:layout_below="@+id/layoutDate">
 
-    <Button
-        android:id="@+id/btnHoraire"
+        <Button
+            android:id="@+id/btnHoraire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choisir l'horaire" />
+
+        <TextView
+            android:id="@+id/txtHoraire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:hint="00:00" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutSalle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtDate"
-        android:layout_centerInParent="true"
-        android:layout_margin="10dp"
-        android:text="Choisir un horaire de réunion" />
+        android:orientation="vertical"
+        android:layout_below="@+id/layoutHoraire">
 
-    <TextView
-        android:id="@+id/txtHoraire"
+        <Spinner
+            android:id="@+id/spinnerSalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/txtSalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="nom de la salle de reunion"
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutParticipants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnHoraire"
-        android:layout_centerInParent="true"
-        android:layout_margin="10dp"
-        android:text="" />
+        android:orientation="horizontal"
+        android:layout_below="@+id/layoutSalle">
 
-    <Spinner
-        android:id="@+id/spinnerSalle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtHoraire"/>
+        <Button
+            android:id="@+id/btnParticipants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choisir les participants" />
 
-    <TextView
-        android:id="@+id/txtSalle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinnerSalle"
-        android:layout_margin="10dp" />
-
-    <Button
-        android:id="@+id/btnParticipants"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtSalle"
-        android:layout_margin="10dp"
-        android:text="Choisir les participants" />
-
-    <TextView
-        android:id="@+id/txtParticipants"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnParticipants"
-        android:layout_margin="10dp" />
+        <TextView
+            android:id="@+id/txtParticipants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Liste des participants"
+            android:padding="5dp"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtParticipants"
+        android:layout_below="@+id/layoutParticipants"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
         android:text="Enregistré" />
