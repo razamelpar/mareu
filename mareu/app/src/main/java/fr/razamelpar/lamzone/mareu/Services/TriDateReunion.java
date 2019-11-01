@@ -1,5 +1,9 @@
 package fr.razamelpar.lamzone.mareu.Services;
 
+
+import android.net.ParseException;
+
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
 
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
@@ -9,9 +13,31 @@ import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
  */
 public class TriDateReunion implements Comparator<Reunion> {
 
-    @Override
-    public int compare(Reunion o1, Reunion o2) {
+    SimpleDateFormat format;
+    boolean ascending;
 
-        return 0;//o1.getDateReunion() - o2.getDateReunion();
+    public TriDateReunion(String pattern)
+    {
+        this(pattern, true);
     }
+    public TriDateReunion(String pattern, boolean ascending)
+    {
+        this.format = new SimpleDateFormat(pattern);
+        this.ascending = ascending;
+    }
+
+    @Override
+    public int compare(Reunion o1, Reunion o2)
+    {
+        try
+        {
+            int n = format.parse(o1.getDateReunion().concat("-" + o1.getHoraireReunion())).compareTo(format.parse(o2.getDateReunion().concat("-" + o2.getHoraireReunion())));
+            return ascending ? +n : -n;
+        }
+        catch (java.text.ParseException | NullPointerException e)
+        {
+            throw new IllegalArgumentException(e);
+        }
+    }
+
 }

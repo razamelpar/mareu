@@ -43,7 +43,7 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
         final Reunion reunion = reunionList.get(position);
         viewHolder.txtSujetReunion.setText(reunion.getSujetReunion());
         viewHolder.txtReunionSalle.setText(reunion.getNumeroSalle().getName());
-        viewHolder.txtReunionHoraire.setText(reunion.getHoraireReunion());
+        viewHolder.txtReunionHoraire.setText(reunion.getDateReunion() + " " +reunion.getHoraireReunion());
         viewHolder.txtReunionParticipants.setText(reunion.getParticipantsReunion());
 
         viewHolder.mDeleteButton.setOnClickListener(new View.OnClickListener() {

@@ -212,7 +212,12 @@ public class ReunionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Reunion newReunion = new Reunion(txtSujet.getText().toString(),ReunionRoom.getRoom(txtSalle.getText().toString()),txtDate.getText().toString(),txtHoraire.getText().toString(),txtParticipants.getText().toString());
+                Reunion newReunion = new Reunion(txtSujet.getText().toString(),
+                        ReunionRoom.getRoom(txtSalle.getText().toString()),
+                        txtDate.getText().toString(),
+                        txtHoraire.getText().toString(),
+                        txtParticipants.getText().toString());
+
                 DI.getReunionApiServices().addReunion(newReunion);
 
                 finish();

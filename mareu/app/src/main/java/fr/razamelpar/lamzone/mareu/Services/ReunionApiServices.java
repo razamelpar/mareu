@@ -42,12 +42,12 @@ public class ReunionApiServices {
 
     public void triDateReunionCroissant() {
         //TODO
-        Collections.sort(this.reunions, new TriDateReunion());
+        Collections.sort(this.reunions, new TriDateReunion("dd/MM/yyyy-HH:mm"));
     }
 
     public void triDateReunionDecroissant() {
         //TODO
-        Collections.sort(this.reunions, new TriDateReunion());
+        Collections.sort(this.reunions, new TriDateReunion("dd/MM/yyyy-HH:mm"));
         Collections.reverse(this.reunions);
     }
 
