@@ -23,18 +23,25 @@ import static org.junit.Assert.assertTrue;
 @RunWith(JUnit4.class)
 public class ReunionApiServicesTest {
 
-    ReunionApiServices services;
+    private ReunionApiServices services;
+    private List<Reunion> reunionList;
+    private Reunion newReunion;
 
     @Before
     public void setUp() throws Exception {
 
         services = DI.getReunionApiServices();
+        reunionList = services.getReunions();
+        newReunion = new Reunion("sujet",
+                ReunionRoom.MARIO,
+                "01/01/2020",
+                "00:00",
+                "participants@contact.fr");
     }
 
     @Test
     public void getReunions() {
 
-        List<Reunion> reunionList = services.getReunions();
         List<Reunion> listAttendu = DummyReunionGenerator.FAKE_REUNION;
         assertThat(reunionList, IsIterableContainingInAnyOrder.containsInAnyOrder(listAttendu.toArray()));
 
@@ -43,7 +50,7 @@ public class ReunionApiServicesTest {
     @Test
     public void deleteReunion() {
 
-        Reunion reunionASupprimer = services.getReunions().get(0);
+        Reunion reunionASupprimer = reunionList.get(0);
         services.deleteReunion((reunionASupprimer));
         assertFalse(services.getReunions().contains(reunionASupprimer));
     }
@@ -51,8 +58,6 @@ public class ReunionApiServicesTest {
     @Test
     public void addReunion() {
 
-        Reunion newReunion = new Reunion("sujet", ReunionRoom.MARIO, "01/01/2020", "00:00", "participants@contact.fr");
-        List<Reunion> reunionList = services.getReunions();
         reunionList.add((newReunion));
         assertTrue(services.getReunions().contains(newReunion));
     }
