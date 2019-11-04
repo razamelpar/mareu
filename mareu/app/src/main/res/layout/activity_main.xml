@@ -18,10 +18,10 @@
         android:id="@+id/btnReunion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_add_circle_24dp"
         android:layout_margin="16dp"
         app:layout_anchor="@id/mRecyclerView"
-        app:layout_anchorGravity="bottom|right|end" />
+        app:layout_anchorGravity="bottom|right|end"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

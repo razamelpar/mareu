@@ -27,10 +27,12 @@ public class ReunionViewHolder extends RecyclerView.ViewHolder {
     public TextView txtReunionParticipants;
     @BindView(R.id.btnDelete)
     public ImageButton mDeleteButton;
+    @BindView(R.id.iconSalle)
+    public TextView iconSalle;
 
     public ReunionViewHolder(View view) {
         super(view);
-        ButterKnife.bind(ReunionViewHolder.this, view);
+        ButterKnife.bind(this, view);
     }
 }
 

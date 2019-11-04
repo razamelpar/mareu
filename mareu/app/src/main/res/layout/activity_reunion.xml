@@ -66,13 +66,15 @@
             android:id="@+id/spinnerSalle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:textAlignment="center"/>
 
         <TextView
             android:id="@+id/txtSalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="nom de la salle de reunion"/>
+            android:hint="nom de la salle de reunion"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <LinearLayout

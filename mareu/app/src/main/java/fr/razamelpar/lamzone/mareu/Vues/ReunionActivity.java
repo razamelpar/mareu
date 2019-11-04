@@ -61,6 +61,9 @@ public class ReunionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reunion);
 
+        /**
+         * date picker
+         */
         Locale.setDefault(Locale.FRANCE);
 
         btnDate = findViewById(R.id.btnDate);
@@ -107,6 +110,9 @@ public class ReunionActivity extends AppCompatActivity {
             }
         };
 
+        /**
+         * time picker
+         */
         btnHoraire = findViewById(R.id.btnHoraire);
         txtHoraire = findViewById(R.id.txtHoraire);
 

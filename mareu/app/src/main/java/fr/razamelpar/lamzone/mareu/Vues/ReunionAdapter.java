@@ -2,7 +2,7 @@ package fr.razamelpar.lamzone.mareu.Vues;
 
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +15,7 @@ import java.util.List;
 
 import fr.razamelpar.lamzone.mareu.Events.DeleteReunionEvent;
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
+import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
 import fr.razamelpar.lamzone.mareu.R;
 
 
@@ -24,6 +25,8 @@ import fr.razamelpar.lamzone.mareu.R;
 public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
 
     private final List<Reunion> reunionList;
+
+
 
     public  ReunionAdapter(List<Reunion> items) {
 
@@ -45,6 +48,10 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
         viewHolder.txtReunionSalle.setText(reunion.getNumeroSalle().getName());
         viewHolder.txtReunionHoraire.setText(reunion.getDateReunion() + " " +reunion.getHoraireReunion());
         viewHolder.txtReunionParticipants.setText(reunion.getParticipantsReunion());
+
+        viewHolder.iconSalle.setText(reunion.getNumeroSalle().getName().substring(0, 1));
+
+        ((GradientDrawable) viewHolder.iconSalle.getBackground()).setColor(reunion.getNumeroSalle().getColor());
 
         viewHolder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
