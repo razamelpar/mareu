@@ -1,7 +1,6 @@
 package fr.razamelpar.lamzone.mareu.Vues;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +23,6 @@ import fr.razamelpar.lamzone.mareu.DI.DI;
 import fr.razamelpar.lamzone.mareu.Events.AddNewReunionEvent;
 import fr.razamelpar.lamzone.mareu.Events.DeleteReunionEvent;
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
-import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
 import fr.razamelpar.lamzone.mareu.R;
 import fr.razamelpar.lamzone.mareu.Services.ReunionApiServices;
 

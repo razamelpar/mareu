@@ -3,12 +3,10 @@ package fr.razamelpar.lamzone.mareu.Vues;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,20 +15,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.greenrobot.eventbus.EventBus;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
 
 import fr.razamelpar.lamzone.mareu.DI.DI;
-import fr.razamelpar.lamzone.mareu.Events.AddNewReunionEvent;
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
 import fr.razamelpar.lamzone.mareu.R;

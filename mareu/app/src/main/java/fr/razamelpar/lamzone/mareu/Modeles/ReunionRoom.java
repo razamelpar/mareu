@@ -2,8 +2,6 @@ package fr.razamelpar.lamzone.mareu.Modeles;
 
 import android.graphics.Color;
 
-import java.util.Random;
-
 /**
  * Created by Alexandre Vanneçon "Razamelpar" on 15/10/2019.
  */
@@ -63,7 +61,6 @@ public enum ReunionRoom {
     }
 
     public int getColor() {
-
         return color;
     }
 }

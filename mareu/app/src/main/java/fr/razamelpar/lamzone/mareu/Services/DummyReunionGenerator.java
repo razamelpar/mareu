@@ -6,7 +6,6 @@ import java.util.List;
 
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
 import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
-import fr.razamelpar.lamzone.mareu.R;
 
 /**
  * Created by Alexandre Vanneçon "Razamelpar" on 23/09/2019.

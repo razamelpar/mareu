@@ -1,6 +1,5 @@
 package fr.razamelpar.lamzone.mareu.Vues;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -8,8 +7,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import fr.razamelpar.lamzone.mareu.R;
+
+import static butterknife.ButterKnife.bind;
 
 /**
  * Created by Alexandre Vanneçon "Razamelpar" on 16/10/2019.
@@ -32,7 +32,7 @@ public class ReunionViewHolder extends RecyclerView.ViewHolder {
 
     public ReunionViewHolder(View view) {
         super(view);
-        ButterKnife.bind(this, view);
+        bind(this, view);
     }
 }
 

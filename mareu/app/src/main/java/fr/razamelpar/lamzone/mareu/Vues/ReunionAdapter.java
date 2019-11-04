@@ -15,7 +15,6 @@ import java.util.List;
 
 import fr.razamelpar.lamzone.mareu.Events.DeleteReunionEvent;
 import fr.razamelpar.lamzone.mareu.Modeles.Reunion;
-import fr.razamelpar.lamzone.mareu.Modeles.ReunionRoom;
 import fr.razamelpar.lamzone.mareu.R;
 
 
