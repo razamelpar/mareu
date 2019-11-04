@@ -144,10 +144,6 @@ public class ReunionActivity extends AppCompatActivity {
 
             }
         };
-        /**
-         * TODO a verfifier
-         */
-        String dateComparable = txtDate + "-" + txtHoraire;
 
         /**
          *  spinner selecteur de salle
