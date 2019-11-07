@@ -13,7 +13,7 @@ public class ReunionApiServices {
     private List<Reunion> reunions = DummyReunionGenerator.generateReunions();
     /**
      * Recuperer mes reunions
-     * @return reunion
+     * @return reunions
      */
     public List<Reunion> getReunions() {
         return reunions;
