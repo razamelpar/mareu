@@ -3,12 +3,12 @@ package fr.razamelpar.lamzone.mareu.Vues;
 
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import fr.razamelpar.lamzone.mareu.R;
 import fr.razamelpar.lamzone.mareu.Utils.DeleteViewAction;
@@ -25,7 +25,7 @@ import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 @LargeTest
-@RunWith(AndroidJUnit4.class)
+@RunWith(JUnit4.class)
 public class TestListView {
 
     private static int ITEMS_COUNT = 6;
@@ -44,12 +44,13 @@ public class TestListView {
     @Test
     public void listViewNonVide() {
         // First scroll to the position that needs to be matched and click on it.
+        reunionList_deleteAction_shouldRemoveItem();
         onView(allOf(withId(R.id.mRecyclerView),isDisplayed()))
                 .check(matches(hasMinimumChildCount(1)));
     }
 
     @Test
-    public void myNeighboursList_deleteAction_shouldRemoveItem() {
+    public void reunionList_deleteAction_shouldRemoveItem() {
         // Given : We remove the element at position 2
         onView(allOf(withId(R.id.mRecyclerView),isDisplayed())).check(withItemCount(ITEMS_COUNT));
         // When perform a click on a delete icon
@@ -58,4 +59,5 @@ public class TestListView {
         // Then : the number of element is 11
         onView(allOf(withId(R.id.mRecyclerView),isDisplayed())).check(withItemCount(ITEMS_COUNT-1));
     }
+
 }
