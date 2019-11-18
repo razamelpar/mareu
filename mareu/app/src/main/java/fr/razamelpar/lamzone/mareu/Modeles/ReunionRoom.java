@@ -67,4 +67,8 @@ public enum ReunionRoom {
     public void setColor(int color) {
         this.color = color;
     }
+
+    public String getNumero() {
+        return Integer.toString(roomNumber);
+    }
 }

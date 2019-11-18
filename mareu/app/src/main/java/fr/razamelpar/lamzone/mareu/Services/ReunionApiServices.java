@@ -20,7 +20,7 @@ public class ReunionApiServices {
     }
 
     /**
-     * Supprimer un reunion
+     * Supprimer une reunion
      */
     public void deleteReunion(Reunion reunion) {
 

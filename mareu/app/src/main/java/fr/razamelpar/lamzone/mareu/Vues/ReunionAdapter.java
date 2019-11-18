@@ -48,7 +48,7 @@ public class ReunionAdapter extends RecyclerView.Adapter<ReunionViewHolder> {
         viewHolder.txtReunionHoraire.setText(reunion.getDateReunion() + " " +reunion.getHoraireReunion());
         viewHolder.txtReunionParticipants.setText(reunion.getParticipantsReunion());
 
-        viewHolder.iconSalle.setText(reunion.getNumeroSalle().getName().substring(0, 1));
+        viewHolder.iconSalle.setText(reunion.getNumeroSalle().getNumero());
 
         ((GradientDrawable) viewHolder.iconSalle.getBackground()).setColor(reunion.getNumeroSalle().getColor());
 
